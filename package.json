@@ -1,0 +1,23 @@
+{
+  "name": "learning_hcm_ideology",
+  "version": "1.0.0",
+  "description": "The website helps you review knowledge of Ho Chi Minh's ideology in the form of multiple choice.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect src/index.js",
+    "watch":"node-sass --watch src/resources/scss/ --output src/public/css/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "author": "thieuhoang2002",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-handlebars": "^7.1.2"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "node-sass": "^9.0.0",
+    "nodemon": "^3.1.0"
+  }
+}
