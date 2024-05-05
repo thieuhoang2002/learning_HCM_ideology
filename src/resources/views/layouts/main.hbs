@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ôn tập Tư tưởng Hồ Chí Minh</title>
     <link rel="stylesheet" href="/css/app.css">
+        <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
-<body>
-    <div class="app">
-
+<body style="background: linear-gradient(#e0c3ff, #9cc4fd);min-height: 100vh;display: flex;flex-direction: column;justify-content: center;"> 
+    <div class="app" >
         {{> header}}
-
         <div class="container">
             {{{body}}}
         </div>
-
         {{> footer}}
-
     </div>
 </body>
 </html>

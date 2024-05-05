@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả chương 1</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Optional CSS customization */
+        .question {
+            margin-bottom: 20px;
+        }
+        .user-answer {
+            font-weight: bold;
+        }
+        .correct-answer {
+            color: green;
+        }
+        .incorrect-question {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kết quả chương 1</h1>
+        <a style="font-size: 16px;line-height: 100%;" href="/">Quay về trang chủ</a>
+        <p class="mb-3">Số câu đúng: {{ correctCount }} / {{ totalCount }}</p>
+        <div id="results">
+            <!-- Kết quả sẽ được hiển thị ở đây -->
+            {{#each results}}
+                <div class="question border p-3 mb-3 {{#unless isCorrect}}incorrect-question{{/unless}}">
+                    <!-- Hiển thị câu hỏi -->
+                    <h3 class="mb-3">{{{ question }}}</h3>
+                    <!-- Hiển thị câu trả lời của người dùng -->
+                    <p class="user-answer">Câu trả lời của bạn: {{ userAnswer }}</p>
+                    <!-- Hiển thị đáp án đúng -->
+                    <p class="correct-answer">Đáp án đúng: {{{ correctAnswer }}}</p>
+                    <!-- Hiển thị tất cả các đáp án -->
+                    <ul style="color: black;">
+                        {{#each this.allAnswers}}
+                            <li style="list-style-type: none;">{{{ this }}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/each}}
+        </div>
+        <a style="display: flex; font-size: 32px;line-height: 100%;margin-bottom: 64px; width: 100%; justify-content: center;" href="/">Quay về trang chủ</a>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
