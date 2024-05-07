@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 function connect() {
     try {
         const db = mongoose.connect(
-            'mongodb+srv://thieuhoangent:thhoang0903@cluster0.ba6xpv6.mongodb.net/tracnghiem_tthcm',
+            process.env.CONNECT_DB_SECRET,
         );
         console.log('connect thanh cong!');
     } catch (error) {
