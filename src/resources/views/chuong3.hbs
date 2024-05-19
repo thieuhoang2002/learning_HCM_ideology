@@ -1,0 +1,69 @@
+
+        <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Optional CSS customization */
+        .question {
+            margin-bottom: 20px;
+        }
+    </style>
+    <div class="container" style="display: flex; width: 90%;height: fit-content;background-color: #ffffff2f;flex-direction: column;border-radius: 25px;padding: 25px;">
+        <h1>Chương 3 (99 câu) <a style="font-size: 16px;line-height: 100%;" href="/">Quay về trang chủ</a></h1>
+        <form action="/chuong3/submit-answer" method="POST">
+            {{#each chuong3}}
+            <div class="question" id="question{{_id}}"  {{#unless @first}}style="display: none; width: 100%; min-height: 300px;"{{/unless}}>
+                <h3>{{ this.question }}</h3>
+                <div class="form-check">
+                    {{#each this.answers}}
+                    <input style="width: 20px; height: 20px;" class="form-check-input" type="radio" name="answer{{../_id}}" id="answer{{../_id}}{{@index}}" value="{{ this.answer }}">
+                    <label style="font-size: 1.5rem; margin-left: .5rem;line-height: 2rem;" class="form-check-label" for="answer{{../_id}}{{@index}}">{{ this.answer }}</label>
+                    <br>
+                    {{/each}}
+                </div>
+            </div>
+            {{/each}}
+            <div class="btn-group" role="group" aria-label="Question navigation">
+                <button type="button" class="btn btn-secondary" onclick="showQuestion(-1)" id="prevBtn">Previous</button>
+                <button type="button" style="margin-left: 1rem;" class="btn btn-secondary" onclick="showQuestion(1)" id="nextBtn">Next</button>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;margin-left: 1rem;">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        var currentQuestion = 0;
+        var questions = document.querySelectorAll('.question');
+        
+        function showQuestion(direction) {
+            questions[currentQuestion].style.display = 'none';
+            currentQuestion += direction;
+            if (currentQuestion < 0) {
+                currentQuestion = 0;
+            } else if (currentQuestion >= questions.length) {
+                currentQuestion = questions.length - 1;
+            }
+            questions[currentQuestion].style.display = 'block';
+            updateButtonVisibility();
+        }
+
+        function updateButtonVisibility() {
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = currentQuestion === questions.length - 1;
+            document.getElementById('submitBtn').style.display = currentQuestion === questions.length - 1 ? 'inline-block' : 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateButtonVisibility();
+        });
+
+
+    </script>
+
+
+
+
+
